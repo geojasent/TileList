@@ -27,11 +27,29 @@ button {
         color: rgb(255, 255, 255);
     }
     
+#projectBreak {
+    height: 1px;
+    width: auto;
+    margin: 20px 0px;
+    background-color: azure;
+}
     #projectContainer {
         height: auto;
         width: 100%;
         color: rgb(255, 255, 255);
     }
+
+        #projectContainer > #projects {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            gap: 10px;
+        }
+
+            #projects > span {
+                background-color: rgb(35, 35, 35);
+                padding: 10px;
+            }
 
         #addProject {
             display: flex;
@@ -68,7 +86,7 @@ button {
                     gap:10px;
                 }
 
-                    #projectInput > #projectName {
+                    #projectInput > input {
                         color:brown;
                     }
                     

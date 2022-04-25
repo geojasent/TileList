@@ -1,5 +1,6 @@
 import storage from "../storage";
 import { displayProjectInputBox } from "./prompt";
+import { domManipulation} from "./domManipulation";
 
 function addClickListener() {
     // const buttonClick = document.querySelector("button")
@@ -21,17 +22,17 @@ function clearContents() {
 function submit() {
     const sumbitButton = document.getElementById("submit");
     sumbitButton.onclick = () => {
-        console.log("submit")
-        storage.addStorage()
+        storage.addProjectStorage()
+        //update dom sidebar with project name
         clearContents()
         displayProjectInputBox()
     }
 };
 
-function cancel() { //why is this not closing on second cancel
+function cancel() {
     const cancelButton = document.getElementById("cancel");
     cancelButton.onclick = () => {
-        console.log("Cancel")
+        clearContents()
         displayProjectInputBox()
     };
 }

@@ -16,7 +16,7 @@ const domManipulation = () => {
 
     }
 
-    //HTML layout
+    //Sidebar
     const body = document.querySelector("body")
 
         body.appendChild(domFactory("div", "id", "sidebarContainer"))
@@ -30,28 +30,35 @@ const domManipulation = () => {
             _logoContainer.appendChild(domFactory("span", "id", "logo")).innerHTML = "LOGO IMAGE"
             _logoContainer.appendChild(domFactory("span", "id", "logoText")).innerHTML = "TiList"
 
-        _sidebar.appendChild(domFactory("section", "id", "projectContainer"))
-        _sidebar.appendChild(domFactory("br", "id", "projectContainer"))
-        
+            _sidebar.appendChild(domFactory("div", "id", "projectBreak"))
+            _sidebar.appendChild(domFactory("section", "id", "projectContainer"))
+            
             const _projectContainer = document.getElementById("projectContainer")
-            _projectContainer
+            
+            _projectContainer.appendChild(domFactory("div", "id", "projects"))
+            
+                //Project box for each project
+                const _projects = document.getElementById("projects")
+
+                var projectBox = function() {
+                    Object.keys(localStorage).forEach(function(key){
+                        _projects.appendChild(domFactory("span", "id", key))
+                        document.getElementById(key).innerHTML = key
+                        console.log("test")
+                    });
+                    return projectBox
+                }();
 
             _projectContainer.appendChild(domFactory("p", "id", "addProject"))
-
-                const _addProject = document.getElementById("addProject")
-                //make this popup project info
-                const testFunction = () => console.log("test")
-
-                _addProject.appendChild(domFactory("p", "id", "plusIcon")).innerHTML = "+"
-                _addProject.appendChild(domFactory("span", "id", "add")).innerHTML = "Add Project"
-                _addProject.addEventListener("click", getInput)
-
-
-
-    
-        body.appendChild(domFactory("div", "id", "mainContainer"))
-        document.getElementById("mainContainer").innerHTML = "This is a project"
-    
+            
+            const _addProject = document.getElementById("addProject")
+            _addProject.appendChild(domFactory("p", "id", "plusIcon")).innerHTML = "+"
+            _addProject.appendChild(domFactory("span", "id", "add")).innerHTML = "Add Project"
+            _addProject.addEventListener("click", getInput)
+            
+            //Main
+            body.appendChild(domFactory("div", "id", "mainContainer"))
+            document.getElementById("mainContainer").innerHTML = "This is a project"
+            
 }
-
 export {domManipulation}
