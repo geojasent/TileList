@@ -1,6 +1,6 @@
 import storage from "../storage";
 import { displayProjectInputBox } from "./prompt";
-import { domManipulation} from "./domManipulation";
+import { domManipulation, projectBox} from "./domManipulation";
 
 function addClickListener() {
     // const buttonClick = document.querySelector("button")
@@ -13,7 +13,7 @@ function removeClickListener() {
     
 }
 
-function clearContents() {
+function clearInput() {
     for (let text of document.querySelectorAll("input")) {
         text.value = ""
     };
@@ -22,19 +22,28 @@ function clearContents() {
 function submit() {
     const sumbitButton = document.getElementById("submit");
     sumbitButton.onclick = () => {
+        if (document.getElementById("projectName").value == "" || document.getElementById("projectDescription").value == "") {
+            alert("Project Name or Project Description cannot be blank")
+        } else {
         storage.addProjectStorage()
-        //update dom sidebar with project name
-        clearContents()
+        projectBox()
+        clearInput()
         displayProjectInputBox()
+        }
     }
 };
+
+function projectDelete() {
+    storage.removeProjectStorage(event.target.parentNode.id)
+    projectBox()
+}
 
 function cancel() {
     const cancelButton = document.getElementById("cancel");
     cancelButton.onclick = () => {
-        clearContents()
+        clearInput()
         displayProjectInputBox()
     };
 }
 
-export {addClickListener, submit, cancel}
+export {addClickListener, submit, projectDelete, cancel}

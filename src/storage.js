@@ -12,11 +12,8 @@ const storage = {
         localStorage.setItem(projectName, JSON.stringify(project))
     },
     
-    removeProjectStorage() {
-        const projectName = document.getElementById("projectName")
-        const projectDescription = document.getElementById("projectDescription")
-        localStorage.removeItem("projectName", projectName)
-        localStorage.removeItem("projectDescription", projectDescription)
+    removeProjectStorage(projectName) {
+        localStorage.removeItem(projectName)
     }
 }
 
