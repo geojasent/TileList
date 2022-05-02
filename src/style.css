@@ -51,7 +51,7 @@ button {
                 padding: 10px;
             }
 
-        #addProject {
+        #addProject, #addTask {
             display: flex;
             flex-direction: row;
             width: fit-content;
@@ -111,3 +111,20 @@ button {
     color: ghostwhite;
 }
 
+.mainProjectName {
+    font-size: 3em;
+}
+
+.projectDesc {
+    font-size: 1.5em;
+}
+
+#taskPromptContainer {
+    display: none;
+    height: 300px;
+    width: 300px;
+    position: fixed;
+    top: calc(50% - 150px);
+    left: calc(50% - 150px);
+    background-color: rgba(248, 248, 255, 0.95);
+}

@@ -1,6 +1,6 @@
-import storage from "../storage";
-import { displayProjectInputBox } from "./prompt";
-import { domManipulation, projectBox} from "./domManipulation";
+import storage from "./storage";
+import { displayProjectInputBox, displayTaskInputBox } from "./prompt";
+import { domManipulation, projectBox, taskBox} from "./domManipulation";
 
 function addClickListener() {
     // const buttonClick = document.querySelector("button")
@@ -22,13 +22,13 @@ function clearInput() {
 function submit() {
     const sumbitButton = document.getElementById("submit");
     sumbitButton.onclick = () => {
-        if (document.getElementById("projectName").value == "" || document.getElementById("projectDescription").value == "") {
+        if (document.getElementById("projectName").value === "" || document.getElementById("projectDescription").value == "") {
             alert("Project Name or Project Description cannot be blank")
         } else {
-        storage.addProjectStorage()
-        projectBox()
-        clearInput()
-        displayProjectInputBox()
+            storage.addProjectStorage()
+            projectBox()
+            clearInput()
+            displayProjectInputBox()
         }
     }
 };
@@ -46,4 +46,26 @@ function cancel() {
     };
 }
 
-export {addClickListener, submit, projectDelete, cancel}
+function submitTask() {
+    const submitTask = document.getElementById('submitTask')
+    submitTask.onclick = () => {
+        if (document.getElementById('task').value === '') {
+            alert('Task cannot be empty')
+        } else {
+            storage.addTaskStorage(storage.getProject(event.target))
+            taskBox() //need to make this display tasks
+            clearInput()
+            displayTaskInputBox()
+        }
+    }
+}
+
+function cancelTask() {
+    const cancelTask = document.getElementById('cancelTask')
+    cancelTask.onclick = () => {
+        clearInput()
+        displayTaskInputBox()
+    }
+}
+
+export {addClickListener, submit, projectDelete, cancel, submitTask, cancelTask}

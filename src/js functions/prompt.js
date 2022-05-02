@@ -11,5 +11,16 @@ function displayProjectInputBox() {
         projectPrompt.style.display = "block";
     }
 }
+function displayTaskInputBox() {
+    //show project input panel
+    const taskPrompt = document.getElementById("taskPromptContainer")
+    const taskPromptDisplay = taskPrompt.style.display
 
-export {displayProjectInputBox}
+    if (taskPromptDisplay === "block") {
+        taskPrompt.style.display = "none";
+    } else {
+        taskPrompt.style.display = "block";
+    }
+}
+
+export {displayProjectInputBox, displayTaskInputBox}

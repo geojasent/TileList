@@ -10,8 +10,8 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-          title: 'FiList',
-          inject: 'body',
+            title: 'FiList',
+            inject: 'body',
             template: './src/index.html',
             filename: 'index.html'
     }),
